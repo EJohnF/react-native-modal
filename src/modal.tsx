@@ -114,6 +114,7 @@ export type ModalProps = ViewProps & {
   hardwareAccelerated?: boolean;
   onOrientationChange?: OnOrientationChange;
   presentationStyle?: PresentationStyle;
+  backdropTestID?: string;
 
   // Default ModalProps Provided
   useNativeDriverForBackdrop?: boolean;
@@ -743,7 +744,7 @@ export class ReactNativeModal extends React.Component<ModalProps, State> {
     // If there's no custom backdrop, handle presses with
     // TouchableWithoutFeedback
     return (
-      <TouchableWithoutFeedback onPress={onBackdropPress}>
+      <TouchableWithoutFeedback testID={this.props.backdropTestID} onPress={onBackdropPress}>
         {backdropWrapper}
       </TouchableWithoutFeedback>
     );
